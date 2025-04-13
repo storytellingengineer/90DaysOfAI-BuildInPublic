@@ -1,0 +1,1 @@
+We are hiring a data scientist with hands-on experience in NLP and deep learning. Required: Python, TensorFlow, and data preprocessing skills.
