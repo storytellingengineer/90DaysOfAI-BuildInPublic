@@ -1,0 +1,2 @@
+Experienced data scientist with a strong background in machine learning, deep learning, and natural language processing.
+Skilled in Python, TensorFlow, scikit-learn, and data analysis with pandas and NumPy.
