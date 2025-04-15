@@ -16,8 +16,7 @@ A simple and effective web app to search live research papers based on any topic
 
 1. Clone the repo:
 ```bash
-git clone <repo_url>
-cd research-recommender
+git clone https://github.com/storytellingengineer/90DaysOfAI-BuildInPublic/tree/main/Day05_Research_Recommender
 ```
 
 2. Install dependencies:
