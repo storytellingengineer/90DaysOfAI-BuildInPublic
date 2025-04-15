@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Research Paper Recommender</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Research Paper Recommender</h1>
+        <form method="post">
+            <input type="text" name="query" placeholder="Enter a research topic" value="{{ query }}" required>
+            <button type="submit">Search</button>
+        </form>
+        {% if papers %}
+            <div class="results">
+                {% for paper in papers %}
+                    <div class="paper">
+                        <h2>{{ paper.title }}</h2>
+                        <p><strong>Authors:</strong> {{ paper.authors }}</p>
+                        <p>{{ paper.abstract }}</p>
+                        <a href="{{ paper.url }}" target="_blank">Read More</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
