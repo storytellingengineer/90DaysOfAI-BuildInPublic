@@ -10,10 +10,10 @@ While I'm focusing on NLP and AI as part of my 90 Days of AI challenge, I know t
 
 ## 📂 What You’ll Find Here
 
-- ✅ Well-commented Python solutions
-- 📌 Categorized by data structure and difficulty
-- 🧠 Key insights or logic used in tricky problems
-- 🔄 Re-attempted problems for concept reinforcement
+- Well-commented Python solutions ✅ 
+- Categorized by data structure and difficulty 📌
+- Key insights or logic used in tricky problems 🧠 
+- Re-attempted problems for concept reinforcement 🔄 
 
 ---
 
