@@ -8,6 +8,8 @@ Welcome to Day 7 of my **#90DaysOfAI** challenge! Today, I explored object detec
 - Ran object detection on sample images
 - Visualized the results using OpenCV
 
+![image](https://github.com/user-attachments/assets/6150bf49-41fd-4071-9c31-c468a5695c2b)
+
 ## 🧠 Learnings
 
 - How object detection models return bounding boxes, confidence scores, and class labels
