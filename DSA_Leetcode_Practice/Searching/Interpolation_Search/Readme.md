@@ -33,4 +33,8 @@ This formula assumes uniform distribution and **interpolates** the likely index 
 
 - **Space Complexity:** O(1) — iterative implementation
 
+## ⚠️ Limitations
+- Doesn't perform well on non-uniformly distributed data
+- Can give incorrect estimates if ```arr[low] == arr[high]```
+
 
