@@ -57,7 +57,7 @@ In this project, I explored how a pretrained transformer model like BERT tokeniz
 - Fine-tuning foundation models for domain-specific tasks
 
 
-> Follow me on [LinkedIn](https://www.linkedin.com/in/storytellingengineer/) to join the rest of my **#90DaysOfAI** journey, where I dive deeper into the real-world applications of AI.
+### Follow me on [LinkedIn](https://www.linkedin.com/in/storytellingengineer/) to join the rest of my **#90DaysOfAI** journey, where I dive deeper into the real-world applications of AI.
 
 
 
