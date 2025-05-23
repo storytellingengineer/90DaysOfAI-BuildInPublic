@@ -1,4 +1,4 @@
-# Day 17 of #90DaysOfAI — Tokenization & Semantic Embedding Visualization using BERT
+# Day 15 of #90DaysOfAI — Tokenization & Semantic Embedding Visualization using BERT
 
 In this project, I explored how a pretrained transformer model like BERT tokenizes text and encodes the meaning of words into high-dimensional vectors. I visualized the hidden semantic relationships between tokens using PCA and observed how context shapes the meaning of identical words (like "bank").
 
