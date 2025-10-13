@@ -1,17 +1,17 @@
-# 🧠 AI-Powered Student Dashboard 📚
+# 🧠 AI-Powered Student Dashboard (Agentic) 📚
 
-A smart dashboard built with **Streamlit**, **Google Classroom API**, and **OpenAI GPT**, designed to help students manage their academic workload effectively and get instant answers to study-related queries using an LLM-powered chatbot.
+A smart, agentic student dashboard built with **Streamlit**, **Google Classroom API**, and **LLM** integration (OpenAI via your wrapper).  
+It supports planner → RAG → LLM orchestration so the dashboard can *act* (produce plans, retrieve relevant context, and execute stepwise answers) instead of only answering single-shot queries.
 
 ---
 
 ## Features
 
-- 📅 **Assignment Tracker**: Pulls live data from Google Classroom – shows pending, submitted, and upcoming assignments.
-- 🎓 **Class & Seminar Info**: Displays classes you should attend and upcoming academic events.
-- 💬 **LLM Chatbot Assistant**:
-  - Answers questions like “What’s due today?” or “Explain Decision Trees.”
-  - Handles ML, NLP, coding topics, project queries, and more.
-- 🔎 **Vector Search**: Uses ChromaDB to fetch study notes and resources for deeper context.
+- **Assignment Tracker** — (via Google Classroom API) shows pending/submitted/upcoming assignments.
+- **Agentic Assistant** — Planner creates small stepwise plan; RAG fetches context; LLM executes each subtask and aggregates the final answer.
+- **LLM Chatbot** — Ask study-related queries: "What's due today?", "Explain Decision Trees", "Find resources for gradient boosting".
+- **Vector Search (RAG)** — ChromaDB / FAISS / Milvus can be used for document retrieval to provide context.
+- **Extensible Agent Modules** — `planner_agent.py`, `rag_agent.py`, `chatbot.py` can be replaced with your custom implementations.
 
 ---
 
@@ -30,8 +30,8 @@ A smart dashboard built with **Streamlit**, **Google Classroom API**, and **Open
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/your-username/student-dashboard-ai.git
-cd student-dashboard-ai
+git clone https://github.com/storytellingengineer/Day25_dashboard_with_chatbot.git
+cd Day25_dashboard_with_chatbot
 ```
 
 ### 2. Set Up Environment
@@ -69,14 +69,17 @@ GOOGLE_CLIENT_SECRET_FILE=credentials.json
 ## Project Structure
 
 ```
-├── app.py                 # Streamlit app
-├── chatbot.py             # LangChain-based GPT chatbot
-├── classroom_api.py       # Google Classroom API integration
-├── prompt.py              # Custom prompt templates
-├── credentials.json       # Google OAuth credentials
-├── .env                   # API keys and secrets
-├── requirements.txt       # Python dependencies
-├── README.md              # This file
+├── app.py # Streamlit app             (this file)
+├── agent_orchestrator.py              # Orchestrator that wires planner -> RAG -> LLM
+├── chatbot.py # Your LLM wrapper      (LangChain / OpenAI calls)
+├── planner_agent.py                   # Optional: produce plans (task decomposition)
+├── rag_agent.py                       # Optional: retrieval from vector DB (Chroma/FAISS)
+├── classroom_api.py                   # Google Classroom integration
+├── prompts.py                         # Prompt templates
+├── requirements.txt
+├── README.md
+├── .env.example
+└── .gitignore
 ```
 
 ## Example Queries for Chatbot
