@@ -1,40 +1,135 @@
-# Day 53 — Build GPT From Scratch
+# Build GPT From Scratch (Educational)
 
-Repository for **Day 53** of my "90 Days of AI" series: building a small GPT-like model from scratch and demonstrating how to call a hosted Gemini model for comparison.
+This repository demonstrates how a **GPT-style Transformer decoder** can be built **from scratch**, without using high-level abstractions such as `nn.Transformer` or HuggingFace trainers.
 
-This repo is educational: it shows the core Transformer decoder components and an end-to-end minimal training loop (toy dataset, char-level). It also includes example code to call Gemini / Google Generative AI for inference.
+The goal is to deeply understand:
+- Causal self-attention
+- Transformer decoder architecture
+- Autoregressive language modeling
+- Training and inference dynamics of GPT-like models
 
----
-
-## Contents
-
-- `mini_gpt.py` — Minimal, single-file GPT-like model (char-level). Train locally and run generation.
-- `gemini_client.py` — Example Gemini API clients:
-  - Option A: `google.generativeai`-style client (easy).
-  - Option B: Vertex AI `PredictionServiceClient` example (for Google Cloud users).
-- `compare_generate.py` — Generate text from both the local model and Gemini to compare results.
-- `README.md` — this file.
+This project is part of **Day 53 of my 90 Days of AI** journey.
 
 ---
 
-## Quick start
+## What is implemented from scratch?
 
-### 1) Clone repo
+- Character-level tokenizer
+- Token & positional embeddings
+- Multi-head self-attention with **causal masking**
+- Feed-forward networks
+- Residual connections + LayerNorm
+- End-to-end training loop (teacher forcing)
+- Autoregressive text generation
+
+No pretrained weights. No black-box trainers.
+
+---
+
+## Repository Structure
+
+- mini_gpt.py # Minimal GPT implementation + training + generation
+- gemini_client.py # Hosted Gemini inference examples (for comparison)
+- compare_generate.py # Compare local GPT vs Gemini outputs
+- README.md
+
+
+---
+
+## Model Architecture
+
+The model follows the standard **GPT decoder-only Transformer** architecture:
+
+1. Token Embedding + Positional Embedding
+2. Repeated Transformer Blocks:
+   - LayerNorm
+   - Multi-Head Self-Attention (causal mask)
+   - Feed Forward Network
+   - Residual connections
+3. Linear projection to vocabulary logits
+
+Causal masking ensures each token can attend **only to past tokens**, enforcing autoregressive behavior.
+
+---
+
+## Training Objective
+
+- Language modeling via **next-token prediction**
+- Loss: Cross-entropy
+- Optimizer: Adam / AdamW
+- Training style: Teacher forcing
+
+The dataset is intentionally small to keep training fast and interpretable.
+
+---
+
+## Why Character-Level Tokenization?
+
+Character-level modeling was chosen to:
+- Avoid dependency on external tokenizers
+- Clearly demonstrate sequence modeling mechanics
+- Keep the implementation minimal and transparent
+
+Limitations of this choice are discussed below.
+
+---
+
+## Text Generation
+
+The model generates text autoregressively by:
+1. Feeding initial context
+2. Sampling next token from model logits
+3. Appending token and repeating
+
+Supports temperature-based sampling.
+
+---
+
+## Gemini Comparison (Optional)
+
+For intuition-building, this repo also includes examples of calling a **hosted Gemini model**.
+
+This comparison highlights:
+- Scale differences
+- Data effects
+- Why architecture alone is not enough
+
+Gemini is **not part of the training pipeline**.
+
+---
+
+## Limitations
+
+- Character-level tokenization (inefficient for large corpora)
+- Small dataset
+- No distributed training
+- No mixed precision
+- No evaluation metrics like perplexity tracking
+
+---
+
+## Future Improvements
+
+- Implement BPE tokenizer
+- Token-level GPT
+- Learning rate scheduling + warmup
+- Perplexity evaluation
+- Modularize model into components
+- Add checkpointing & logging
+- Scale to WikiText-2
+
+---
+
+## How to Run
+
 ```bash
-git clone https://github.com/<your-username>/day53-build-gpt-from-scratch.git
-cd day53-build-gpt-from-scratch
+pip install torch google-generative-ai
+python mini_gpt.py
 ```
 
-### 2) (Optional) Create a virtualenv
-```
-python -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-```
-
-### 3) Install required packages
-```
-pip install torch
-pip install google-generative-ai
-```
-
+## Key Learnings
+This project helped me deeply understand:
+- How causal attention works internally
+- Why GPT scales well with data
+- Training instability and optimization challenges
+- Differences between local models and hosted LLMs
