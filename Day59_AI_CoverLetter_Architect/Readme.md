@@ -272,5 +272,5 @@ For questions or feedback, please open an issue on GitHub.
 
 ---
 
-**Made with ❤️ using Emergent**
+**Made with ❤️**
 "
